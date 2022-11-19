@@ -20,16 +20,11 @@ Please use this starter template to answer the following questions:
 ### Visualize range image channels (ID_S1_EX1)
 ### Task preparations
 In file loop_over_dataset.py, set the attributes for code execution in the following way:
-
-data_filename = 'training_segment-1005081002024129653_5313_150_5333_150_with_camera_labels.tfrecord
+data_filename = 'training_segment-1005081002024129653_5313_150_5333_150_with_camera_labels.tfrecord'
 show_only_frames = [0, 1]
-
 exec_data = []
-
 exec_detection = []
-
 exec_tracking = []
-
 exec_visualization = ['show_range_image']
 
 ### The result look like:
