@@ -33,4 +33,23 @@ exec_tracking = []
 
 exec_visualization = ['show_range_image']
 
-### The result look like:
+### The result looks like:
+
+![221119](https://user-images.githubusercontent.com/94186015/202856176-73d9c92c-3bdb-4541-83a4-a543229deb1c.PNG)
+
+### Visualize lidar point-cloud (ID_S1_EX2)
+### Task preparations
+In file loop_over_dataset.py, set the attributes for code execution in the following way:
+
+data_filename = 'training_segment-10963653239323173269_1924_000_1944_000_with_camera_labels.tfrecord'
+
+show_only_frames = [0, 200]
+
+exec_data = []
+
+exec_detection = []
+
+exec_tracking = []
+
+exec_visualization = ['show_pcl']
+
