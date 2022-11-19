@@ -33,22 +33,6 @@ exec_tracking = []
 
 exec_visualization = ['show_range_image']
 
-### The results look like:
-
-![Bird view](https://user-images.githubusercontent.com/94186015/202858494-7af9f318-5a64-4728-99a2-4acdd3019696.PNG)
-
-![Tyre](https://user-images.githubusercontent.com/94186015/202858540-47323a99-05e6-4606-bc69-27a36e2c5ca5.PNG)
-
-![top](https://user-images.githubusercontent.com/94186015/202858565-26bad9e7-e177-4afe-9233-70012ced3bb8.PNG)
-
-![Rear](https://user-images.githubusercontent.com/94186015/202858591-c83e14bf-ec90-4375-a1a8-ef12085576eb.PNG)
-
-
-
-
-
-
-
 ### The result looks like:
 
 ![221119](https://user-images.githubusercontent.com/94186015/202856176-73d9c92c-3bdb-4541-83a4-a543229deb1c.PNG)
@@ -68,4 +52,16 @@ exec_detection = []
 exec_tracking = []
 
 exec_visualization = ['show_pcl']
+
+### The results look like:
+
+![Bird view](https://user-images.githubusercontent.com/94186015/202858494-7af9f318-5a64-4728-99a2-4acdd3019696.PNG)
+
+![Tyre](https://user-images.githubusercontent.com/94186015/202858540-47323a99-05e6-4606-bc69-27a36e2c5ca5.PNG)
+
+![top](https://user-images.githubusercontent.com/94186015/202858565-26bad9e7-e177-4afe-9233-70012ced3bb8.PNG)
+
+![Rear](https://user-images.githubusercontent.com/94186015/202858591-c83e14bf-ec90-4375-a1a8-ef12085576eb.PNG)
+
+
 
