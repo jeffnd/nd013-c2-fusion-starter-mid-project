@@ -13,3 +13,6 @@ Please use this starter template to answer the following questions:
 
 ### 4. Can you think of ways to improve your tracking results in the future?
 
+# Mid-Term Project: 3D Object Detection
+
+Section 1 : Compute Lidar Point-Cloud from Range Image
