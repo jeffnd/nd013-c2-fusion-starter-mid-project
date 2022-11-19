@@ -15,4 +15,4 @@ Please use this starter template to answer the following questions:
 
 # Mid-Term Project: 3D Object Detection
 
-Section 1 : Compute Lidar Point-Cloud from Range Image
+### Section 1 : Compute Lidar Point-Cloud from Range Image
