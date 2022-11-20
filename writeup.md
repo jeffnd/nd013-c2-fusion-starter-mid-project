@@ -123,3 +123,22 @@ exec_visualization = []
 
 ![221120g2](https://user-images.githubusercontent.com/94186015/202888731-855c3447-ed8d-48c5-9be9-8594f53ad2c7.PNG)
 
+### Section 3 : Model-based Object Detection in BEV Image
+
+### Add a second model from a GitHub repo (ID_S3_EX1)
+### Task preparations
+In file loop_over_dataset.py, set the attributes for code execution in the following way:
+
+data_filename = 'training_segment-1005081002024129653_5313_150_5333_150_with_camera_labels.tfrecord
+
+show_only_frames = [50, 51]
+
+exec_data = ['pcl_from_rangeimage', 'load_image']
+
+exec_detection = ['bev_from_pcl', 'detect_objects']
+
+exec_tracking = []
+
+exec_visualization = ['show_objects_in_bev_labels_in_camera']
+
+configs_det = det.load_configs(model_name="fpn_resnet")
