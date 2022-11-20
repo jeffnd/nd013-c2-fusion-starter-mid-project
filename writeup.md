@@ -182,3 +182,23 @@ configs_det = det.load_configs(model_name="fpn_resnet")
 ### The result looks like:
 
 ![221120g3](https://user-images.githubusercontent.com/94186015/202889643-aa6a4497-8dc6-4d8e-ab8e-72a3ab1135b9.PNG)
+
+### Section 4 : Performance Evaluation for Object Detection
+
+### Compute intersection-over-union between labels and detections (ID_S4_EX1)
+### Task preparations
+In file loop_over_dataset.py, set the attributes for code execution in the following way:
+
+data_filename = 'training_segment-1005081002024129653_5313_150_5333_150_with_camera_labels.tfrecord
+
+show_only_frames = [50, 51]
+
+exec_data = ['pcl_from_rangeimage']
+
+exec_detection = ['bev_from_pcl', 'detect_objects', 'validate_object_labels', 'measure_detection_performance']
+
+exec_tracking = []
+
+exec_visualization = ['show_detection_performance']
+
+configs_det = det.load_configs(model_name="darknet")
