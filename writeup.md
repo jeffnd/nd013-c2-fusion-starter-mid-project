@@ -79,4 +79,47 @@ exec_tracking = []
 
 exec_visualization = []
 
+### The result looks like:
+
+![221120g](https://user-images.githubusercontent.com/94186015/202888609-b518820e-fd67-4a7a-8621-10e478384100.PNG)
+
+### Compute intensity layer of the BEV map (ID_S2_EX2)
+### Task preparations
+In file loop_over_dataset.py, set the attributes for code execution in the following way:
+
+data_filename = 'training_segment-1005081002024129653_5313_150_5333_150_with_camera_labels.tfrecord
+
+show_only_frames = [0, 1]
+
+exec_data = ['pcl_from_rangeimage']
+
+exec_detection = ['bev_from_pcl']
+
+exec_tracking = []
+
+exec_visualization = []
+
+### The result looks like:
+
+![221120g1](https://user-images.githubusercontent.com/94186015/202888678-4c91532e-ea01-4066-a61c-639b0879dd74.PNG)
+
+### Compute height layer of the BEV map (ID_S2_EX3)
+### Task preparations
+In file loop_over_dataset.py, set the attributes for code execution in the following way:
+
+data_filename = 'training_segment-1005081002024129653_5313_150_5333_150_with_camera_labels.tfrecord
+
+show_only_frames = [0, 1]
+
+exec_data = ['pcl_from_rangeimage']
+
+exec_detection = ['bev_from_pcl']
+
+exec_tracking = []
+
+exec_visualization = []
+
+### The result looks like:
+
+![221120g2](https://user-images.githubusercontent.com/94186015/202888731-855c3447-ed8d-48c5-9be9-8594f53ad2c7.PNG)
 
