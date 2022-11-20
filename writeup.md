@@ -55,13 +55,12 @@ exec_visualization = ['show_pcl']
 
 ### The results look like:
 
-![Bird view](https://user-images.githubusercontent.com/94186015/202858494-7af9f318-5a64-4728-99a2-4acdd3019696.PNG)
+![1120A](https://user-images.githubusercontent.com/94186015/202886781-954166de-c9ce-4db7-8d6a-6344e8577359.PNG)
 
-![Tyre](https://user-images.githubusercontent.com/94186015/202858540-47323a99-05e6-4606-bc69-27a36e2c5ca5.PNG)
+![1120B](https://user-images.githubusercontent.com/94186015/202886800-92662a58-1715-4075-b489-a19f562c525f.PNG)
 
-![top](https://user-images.githubusercontent.com/94186015/202858565-26bad9e7-e177-4afe-9233-70012ced3bb8.PNG)
+![1120C](https://user-images.githubusercontent.com/94186015/202886808-4faba2cb-a60d-4366-bc21-f39b07360edf.PNG)
 
-![Rear](https://user-images.githubusercontent.com/94186015/202858591-c83e14bf-ec90-4375-a1a8-ef12085576eb.PNG)
 
 
 
