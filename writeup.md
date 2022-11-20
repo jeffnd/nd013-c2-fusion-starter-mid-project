@@ -143,6 +143,42 @@ exec_visualization = ['show_objects_in_bev_labels_in_camera']
 
 configs_det = det.load_configs(model_name="fpn_resnet")
 
+### Where to find this task?
+This task involves writing code within the functions detect_objects, load_configs_model and create_model located in the file student/objdet_detect.py.
+
+### What this task is about?
+The model-based detection of objects in lidar point-clouds using deep-learning is a heavily researched area with new approaches appearing in the literature and on GitHub every few weeks. On the website Papers With Code and on GitHub, several repositories with code for object detection can be found, such as Complex-YOLO: Real-time 3D Object Detection on Point Clouds and Super Fast and Accurate 3D Object Detection based on 3D LiDAR Point Clouds.
+
+The goal of this task is to illustrate how a new model can be integrated into an existing framework. The task consists of the following steps:
+
+Clone the repo Super Fast and Accurate 3D Object Detection based on 3D LiDAR Point Clouds
+Familiarize yourself with the code in SFA3D->test.py with the goal of understanding the steps involved for performing inference with a pre-trained model
+Extract the relevant parameters from SFA3D->test.py->parse_test_configs() and add them to the configs structure in load_configs_model.
+Instantiate the model for fpn_resnet in create_model.
+After model inference has been performed, decode the output and perform post-processing in detect_objects-
+Visualize the results by setting the flag show_objects_in_bev_labels_in_camera
+Note that the pre-trained model from SFA3D as well as the model classes and some helper functions have already been integrated into the mid-term project. You can find all related files in the folder tools/objdet_models/resnet.
+
+Also note that in this project, we are only focussing on the detection of vehicles, even though the Waymo Open dataset contains labels for other road users as well.
+
+### Extract 3D bounding boxes from model response (ID_S3_EX2)
+### Task preparations
+In file loop_over_dataset.py, set the attributes for code execution in the following way:
+
+data_filename = 'training_segment-1005081002024129653_5313_150_5333_150_with_camera_labels.tfrecord
+
+show_only_frames = [50, 51]
+
+exec_data = ['pcl_from_rangeimage', 'load_image']
+
+exec_detection = ['bev_from_pcl', 'detect_objects']
+
+exec_tracking = []
+
+exec_visualization = ['show_objects_in_bev_labels_in_camera']
+
+configs_det = det.load_configs(model_name="fpn_resnet")
+
 ### The result looks like:
 
 ![221120g3](https://user-images.githubusercontent.com/94186015/202889643-aa6a4497-8dc6-4d8e-ab8e-72a3ab1135b9.PNG)
