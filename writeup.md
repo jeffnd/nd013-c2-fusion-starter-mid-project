@@ -142,3 +142,7 @@ exec_tracking = []
 exec_visualization = ['show_objects_in_bev_labels_in_camera']
 
 configs_det = det.load_configs(model_name="fpn_resnet")
+
+### The result looks like:
+
+![221120g3](https://user-images.githubusercontent.com/94186015/202889643-aa6a4497-8dc6-4d8e-ab8e-72a3ab1135b9.PNG)
