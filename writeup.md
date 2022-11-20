@@ -61,6 +61,22 @@ exec_visualization = ['show_pcl']
 
 ![1120C](https://user-images.githubusercontent.com/94186015/202886808-4faba2cb-a60d-4366-bc21-f39b07360edf.PNG)
 
+### Section 2 : Create Birds-Eye View from Lidar PCL
 
+### Convert sensor coordinates to BEV-map coordinates (ID_S2_EX1)
+### Task preparations
+In file loop_over_dataset.py, set the attributes for code execution in the following way:
+
+data_filename = 'training_segment-1005081002024129653_5313_150_5333_150_with_camera_labels.tfrecord
+
+show_only_frames = [0, 1]
+
+exec_data = ['pcl_from_rangeimage']
+
+exec_detection = ['bev_from_pcl']
+
+exec_tracking = []
+
+exec_visualization = []
 
 
