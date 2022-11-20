@@ -202,3 +202,91 @@ exec_tracking = []
 exec_visualization = ['show_detection_performance']
 
 configs_det = det.load_configs(model_name="darknet")
+
+# compute intersection over union (iou) and distance between centers
+
+            ####### ID_S4_EX1 START #######     
+            #######
+            print("student task ID_S4_EX1 ")
+
+            ## step 1 : extract the four corners of the current label bounding-box
+            box = label.box
+            box_1 = tools.compute_box_corners(box.center_x, box.center_y, box.width, box.length, box.heading)
+
+            ## step 2 : loop over all detected objects
+            for detection in detections:
+
+                ## step 3 : extract the four corners of the current detection
+                _id, x, y,z, _h, w, l, yaw = detection
+                box_2 = tools.compute_box_corners(x, y, w, l, yaw)
+
+                ## step 4 : computer the center distance between label and detection bounding-box in x, y, and z
+                dist_x = np.array(box.center_x - x).item()
+                dist_y = np.array(box.center_y - y).item()
+                dist_z = np.array(box.center_z - z).item()
+                # dist_x = box.center_x - x
+                # dist_y = box.center_y - y
+                # dist_Z = box.center_z - z
+
+                ## step 5 : compute the intersection over union (IOU) between label and detection bounding-box
+                try:
+                    poly_1 = Polygon(box_1)
+                    poly_2 = Polygon(box_2)
+                    intersection = poly_1.intersection(poly_2).area 
+                    union = poly_1.union(poly_2).area
+                    iou = intersection / union
+                except Exception as err:
+                    print("Error in computation",err)
+                ## step 6 : if IOU exceeds min_iou threshold, store [iou,dist_x, dist_y, dist_z] in matches_lab_det and increase the TP count
+                if iou > min_iou:
+                    matches_lab_det.append([iou,dist_x, dist_y, dist_z ])
+                    true_positives = true_positives + 1
+
+            #######
+            ####### ID_S4_EX1 END #######   
+            
+            
+            ####### ID_S4_EX2 START #######     
+    #######
+    print("student task ID_S4_EX2")
+    
+    # compute positives and negatives for precision/recall
+    
+    ## step 1 : compute the total number of positives present in the scene
+    all_positives = labels_valid.sum()
+
+
+    ## step 2 : compute the number of false negatives
+    false_negatives = all_positives - true_positives
+
+
+    ## step 3 : compute the number of false positives
+    false_positives = len(detections) - true_positives
+
+    
+    #######
+    ####### ID_S4_EX2 END #######     
+    
+    
+    ####### ID_S4_EX3 START #######     
+    #######    
+    print('student task ID_S4_EX3')
+
+    ## step 1 : extract the total number of positives, true positives, false negatives and false positives
+    TP = sum([data[1] for data in pos_negs])
+    FN = sum([data[2] for data in pos_negs])
+    FP = sum([data[3] for data in pos_negs])
+
+    ## step 2 : compute precision
+    precision = TP / (TP + FP)
+
+
+    ## step 3 : compute recall 
+    recall = TP / (TP + FN)
+
+
+    #######    
+    ####### ID_S4_EX3 END #######     
+    print('precision = ' + str(precision) + ", recall = " + str(recall))   
+
+
