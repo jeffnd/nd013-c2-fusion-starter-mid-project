@@ -289,4 +289,9 @@ configs_det = det.load_configs(model_name="darknet")
     ####### ID_S4_EX3 END #######     
     print('precision = ' + str(precision) + ", recall = " + str(recall))   
 
+### The result is:
+
+precision = 0.9508196721311475, recall = 0.9477124183006536
+
+![221120g6](https://user-images.githubusercontent.com/94186015/202906937-b7969927-37a8-4623-8bc2-5e2f0a9b2040.PNG)
 
