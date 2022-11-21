@@ -45,7 +45,7 @@ def show_pcl(pcl):
     # step 1 : initialize open3d with key callback and create window
     
     vis = o3d.visualization.VisualizerWithKeyCallback()
-
+    vis.create_window(window_name='Point Cloud View', width=1920, height=1080, left=50, top=50, visible=True)
     # step 2 : create instance of open3d point-cloud class
     
     pcd = o3d.geometry.PointCloud()
@@ -61,7 +61,7 @@ def show_pcl(pcl):
         return False
 
     # step 5 : visualize point cloud and keep window open until right-arrow is pressed (key-code 262)
-    vis.create_window(window_name='Point Cloud View', width=1920, height=1080, left=50, top=50, visible=True)
+    
     vis.register_key_callback(262, exit_callback)
     vis.add_geometry(pcd)
 
