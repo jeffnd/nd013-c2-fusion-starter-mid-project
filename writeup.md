@@ -203,7 +203,7 @@ exec_visualization = ['show_detection_performance']
 
 configs_det = det.load_configs(model_name="darknet")
 
-# compute intersection over union (iou) and distance between centers
+### compute intersection over union (iou) and distance between centers
 
             ####### ID_S4_EX1 START #######     
             #######
