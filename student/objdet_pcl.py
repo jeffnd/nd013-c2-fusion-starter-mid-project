@@ -46,6 +46,7 @@ def show_pcl(pcl):
     
     vis = o3d.visualization.VisualizerWithKeyCallback()
     vis.create_window(window_name='Point Cloud View', width=1920, height=1080, left=50, top=50, visible=True)
+   
     # step 2 : create instance of open3d point-cloud class
     
     pcd = o3d.geometry.PointCloud()
@@ -55,19 +56,18 @@ def show_pcl(pcl):
     pcd.points = o3d.utility.Vector3dVector(pcl[:, :3])
 
     # step 4 : for the first frame, add the pcd instance to visualization using add_geometry; for all other frames, use update_geometry instead
-    def exit_callback(vis):
-        # vis.destroy_window()
-        vis.close()
-        return False
-
+    
+    vis.add_geometry(pcd)
+   
     # step 5 : visualize point cloud and keep window open until right-arrow is pressed (key-code 262)
     
-    vis.register_key_callback(262, exit_callback)
-    vis.add_geometry(pcd)
-
     vis.run()
-
-
+    def exit_callback(vis):
+        vis.close()
+        return False
+    vis.register_key_callback(262, exit_callback)
+    
+    
     #######
     ####### ID_S1_EX2 END #######     
        
@@ -130,13 +130,15 @@ def bev_from_pcl(lidar_pcl, configs):
     print("student task ID_S2_EX1")
 
     ## step 1 :  compute bev-map discretization by dividing x-range by the bev-image height (see configs)
-    discretized_bev = (configs.lim_x[1] - configs.lim_x[0]) / configs.bev_height
+    
+    bev_discret = (configs.lim_x[1] - configs.lim_x[0]) / configs.bev_height
+    
     ## step 2 : create a copy of the lidar pcl and transform all metrix x-coordinates into bev-image coordinates    
     lidar_pcl_cpy = np.copy(lidar_pcl)
-    lidar_pcl_cpy[:, 0] = np.int_(np.floor(lidar_pcl_cpy[:, 0] / discretized_bev))
+    lidar_pcl_cpy[:, 0] = np.int_(np.floor(lidar_pcl_cpy[:, 0] / bev_discret))
 
     # step 3 : perform the same operation as in step 2 for the y-coordinates but make sure that no negative bev-coordinates occur
-    lidar_pcl_cpy[:, 1] = np.int_(np.floor(lidar_pcl_cpy[:, 1] / discretized_bev) + (configs.bev_width + 1) / 2)
+    lidar_pcl_cpy[:, 1] = np.int_(np.floor(lidar_pcl_cpy[:, 1] / bev_discret) + (configs.bev_width + 1) / 2)
 
     # step 4 : visualize point-cloud using the function show_pcl from a previous task
     show_pcl(lidar_pcl_cpy)
@@ -155,13 +157,13 @@ def bev_from_pcl(lidar_pcl, configs):
 
     # step 2 : re-arrange elements in lidar_pcl_cpy by sorting first by x, then y, then -z (use numpy.lexsort)
     lidar_pcl_cpy[lidar_pcl_cpy[:, 3] > 1.0, 3] = 1.0
-    index_intensity = np.lexsort((-lidar_pcl_cpy[:, 3], lidar_pcl_cpy[:, 1], lidar_pcl_cpy[:, 0]))
-    lidar_pcl_cpy = lidar_pcl_cpy[index_intensity]
+    idx_intensity = np.lexsort((-lidar_pcl_cpy[:, 3], lidar_pcl_cpy[:, 1], lidar_pcl_cpy[:, 0]))
+    lidar_pcl_cpy = lidar_pcl_cpy[idx_intensity]
     
     ## step 3 : extract all points with identical x and y such that only the top-most z-coordinate is kept (use numpy.unique)
     ##          also, store the number of points per x,y-cell in a variable named "counts" for use in the next task
-    _, inds, counts = np.unique(lidar_pcl_cpy[:, 0:2], axis=0, return_index=True, return_counts=True)
-    lidar_pcl_int = lidar_pcl_cpy[inds]
+    _, indices, counts = np.unique(lidar_pcl_cpy[:, 0:2], axis=0, return_index=True, return_counts=True)
+    lidar_pcl_int = lidar_pcl_cpy[indices]
 
 
     ## step 4 : assign the intensity value of each unique entry in lidar_top_pcl to the intensity map 
@@ -192,8 +194,8 @@ def bev_from_pcl(lidar_pcl, configs):
     index_height = np.lexsort((-lidar_pcl_cpy[:, 2], lidar_pcl_cpy[:, 1], lidar_pcl_cpy[:, 0]))
     lidar_pcl_top = lidar_pcl_cpy[index_height]
 
-    _, inds = np.unique(lidar_pcl_top[:, :2], axis=0, return_index=True)
-    lidar_pcl_top = lidar_pcl_top[inds]
+    _, idx_hei = np.unique(lidar_pcl_top[:, :2], axis=0, return_index=True)
+    lidar_pcl_top = lidar_pcl_top[idx_hei]
 
     height_map[np.int_(lidar_pcl_top[:, 0]), np.int_(lidar_pcl_top[:, 1])] = lidar_pcl_top[:, 2] / float(
         np.abs(configs.lim_z[1] - configs.lim_z[0]))
