@@ -62,13 +62,10 @@ def load_configs_model(model_name='darknet', configs=None):
         #######
         print("student task ID_S3_EX1-3")
         
-        # Configs taken from SFA3D repo, test.py
         configs.arch = 'fpn_resnet'
         configs.saved_fn = 'fpn_resnet'
         configs.pretrained_path = 'tools/objdet_models/resnet/pretrained/fpn_resnet_18_epoch_300.pth'
         configs.pretrained_filename = configs.pretrained_path
-
-        configs.arch = 'fpn_resnet'
         configs.conf_thresh = 0.5
         configs.batch_size = 4
         configs.num_layers = 18
